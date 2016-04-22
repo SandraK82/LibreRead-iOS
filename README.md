@@ -16,3 +16,5 @@ Whats working so far:
 - [ ] save Sensor data
 - [ ] show old sensor data
 - [ ] do only incremental updates of sensor data
+
+Do not forget to run pod install after cloning! ( https://cocoapods.org )
