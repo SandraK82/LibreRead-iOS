@@ -11,6 +11,8 @@
 #import <NotificationCenter/NotificationCenter.h>
 #import <MMWormhole/MMWormhole.h>
 
+#define WAIT_TIME 120
+
 @interface AppDelegate () <BlueReaderDelegate>
 @property (strong, nonatomic) BlueReader* blueReader;
 @property (nonatomic) int waitTime;
@@ -242,10 +244,10 @@
         //self.view.sensorLabel.text = self.sensorText = [NSString stringWithFormat:@"%@\naktueller Trend: %d",self.sensorText,bgt/10];
 
         self.infoText = @"Tag read completed, sleeping…";
-        _waitTime = 120;
+        _waitTime = WAIT_TIME;
 
         UILocalNotification *localNotification = [[UILocalNotification alloc] init];
-        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:150];
+        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:WAIT_TIME*2];
         localNotification.alertBody = @"Reader lost!";
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         localNotification.applicationIconBadgeNumber = 1;
