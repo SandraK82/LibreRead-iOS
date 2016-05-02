@@ -194,7 +194,7 @@
         NSMutableDictionary* history = [NSMutableDictionary new];
 
         uint16_t h_time = sensor_time -(sensor_time%15);
-        h_time -= (15*32);
+        h_time -= (15*31);
         uint16_t bg=0;
         for(int i = 0; i < 32; i++)
         {
