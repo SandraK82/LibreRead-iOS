@@ -20,7 +20,6 @@
 @property (nonatomic,strong) NSString* myReader;
 @property (nonatomic) UIBackgroundTaskIdentifier bgTask;
 @property (nonatomic,strong) NSString* infoText;
-//@property (nonatomic,strong) NSString* sensorText;
 @property (nonatomic,strong) NSTimer* timer;
 @property (nonatomic,strong) MMWormhole* wormhole;
 
@@ -254,7 +253,7 @@
         localNotification.soundName = UILocalNotificationDefaultSoundName;
         localNotification.applicationIconBadgeNumber = 1;
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-
+        
         [self info];
         [_view updateGraph:sensor];
     }
