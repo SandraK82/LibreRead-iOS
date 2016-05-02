@@ -103,6 +103,11 @@
 - (NSString * _Nonnull)stringForXValue:(NSInteger)index original:(NSString * _Nonnull)original viewPortHandler:(ChartViewPortHandler * _Nonnull)viewPortHandler
 {
     NSNumber* st = [_sensor objectForKey:@"sensor_time"];
+    if([_xAxisValues count] < index)
+    {
+        NSLog(@"wtf!");
+        return @"XXX";
+    }
     NSNumber* os = [_xAxisValues objectAtIndex:index];
 
     int minutes = [st intValue] - [os intValue];
@@ -177,6 +182,11 @@
     int trv = 0;
     for (int i = 0; i < [_xAxisValues count]; i++)
     {
+        if([_xAxisValues count] < i)
+        {
+            NSLog(@"wtf!");
+            continue;
+        }
         NSNumber* ts = [_xAxisValues objectAtIndex:i];
         [xVals addObject:[ts stringValue]];
 
