@@ -26,6 +26,8 @@
 
 @property (nonatomic,strong) NSMutableString* current_tag;
 @property (nonatomic,strong) NSMutableData* currentData;
+
+@property (nonatomic,strong) NSTimer* waittimer;
 @end
 
 @implementation AppDelegate
@@ -101,7 +103,7 @@
     else
     {
         _waitTime--;
-        [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(info) userInfo:nil repeats:NO];
+        _waittimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(info) userInfo:nil repeats:NO];
     }
 }
 -(void)blueReaderFoundTag:(NSData *)tag error:(NSError *)error
@@ -284,6 +286,10 @@
     self.view.statusLabel.text = @"opened connection, configuring blueReader…";
     _myReader = blueReader;
     [self.blueReader startbeat:60];
-    [self.blueReader readTag];
+
+    if(!_waittimer || ![_waittimer isValid])
+    {
+        [self.blueReader readTag];
+    }
 }
 @end
