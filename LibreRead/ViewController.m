@@ -156,7 +156,10 @@
     }
     for(NSNumber* t in [historie keyEnumerator])
     {
-        [_xAxisValues addObject:t];
+        if(![_xAxisValues containsObject:t])
+        {
+            [_xAxisValues addObject:t];
+        }
     }
     [_xAxisValues sortUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:@"intValue"
                                                                        ascending:YES]]];
